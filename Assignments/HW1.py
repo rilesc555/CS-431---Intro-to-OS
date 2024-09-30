@@ -2,7 +2,6 @@ import re
 from typing import List
 import heapq
 import numpy as np
-from sympy import comp
 
 
 def SJF(processes: List[List]):

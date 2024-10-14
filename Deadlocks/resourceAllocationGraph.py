@@ -30,21 +30,43 @@ class ResourceAllocationGraph:
         plt.title("Resource Allocation Graph")
         plt.show()
 
+    def check_deadlock(self):
+        # check if there is a cycle in the graph
+        cycles = list(nx.simple_cycles(self.graph))
+        if cycles:
+            print("Deadlock detected")
+            print("Processes involved in the deadlock:")
+            print(cycles)
+        else:
+            print("No deadlock detected")
+
 
 def main():
     processes = ["P1"]
     resources = ["R1"]
 
-    rag = ResourceAllocationGraph(processes, resources)
-    rag.add_edge("P1", "R1")
-    rag.add_edge("R1", "P2")
-    rag.add_edge("P2", "R3")
-    rag.add_edge("R3", "P3")
-    rag.add_edge("R2", "P1")
-    rag.add_edge("R2", "P2")
+    rag1 = ResourceAllocationGraph(processes, resources)
+    rag1.add_edge("P1", "R1")
+    rag1.add_edge("R1", "P2")
+    rag1.add_edge("P2", "R3")
+    rag1.add_edge("R3", "P3")
+    rag1.add_edge("R2", "P1")
+    rag1.add_edge("R2", "P2")
 
-    rag.visualize()
+    rag1.visualize()
+    rag1.check_deadlock()
 
+    rag2= ResourceAllocationGraph(processes, resources)
+    rag2.add_edge("P1", "R1")
+    rag2.add_edge("R1", "P2")
+    rag2.add_edge("P2", "R3")
+    rag2.add_edge("R3", "P3")
+    rag2.add_edge("R2", "P1")
+    rag2.add_edge("R2", "P2") 
+    rag2.add_edge("P3", "R2")
+
+    rag2.visualize()
+    rag2.check_deadlock()
 
 if __name__ == "__main__":
     main()

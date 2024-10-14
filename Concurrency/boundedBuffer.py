@@ -1,6 +1,7 @@
 from semaphore import Semaphore
 from collections import deque
 
+
 class BoundedBuffer:
     def __init__(self, size):
         self.semaphore_empty = Semaphore(size)
@@ -10,7 +11,7 @@ class BoundedBuffer:
     def producer(self, item):
         self.semaphore_empty.P()
         self.buffer.appendleft(item)
-        print(f'Produced {item}')
+        print(f"Produced {item}")
         self.semaphore_full.V()
 
     def consumer(self):
@@ -19,7 +20,7 @@ class BoundedBuffer:
 
         # Consume the item
         item = self.buffer.pop()
-        print(f'Consumed {item}')
+        print(f"Consumed {item}")
 
         # Signal that there is an empty slot in the buffer
         self.semaphore_empty.V()

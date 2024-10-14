@@ -48,11 +48,12 @@ def SJF(processes: List[List]):
 
     return turnaround_times, completion_times
 
+
 def SRT(origprocesses: List[List]):
-    '''
+    """
     pre-emptive version of SJF
     processes: [[process, arrival_time, burst_time]]
-    '''
+    """
 
     # Variables to keep track of current time, turnaround times and completion times
     processes = origprocesses.copy()
@@ -101,6 +102,7 @@ def SRT(origprocesses: List[List]):
         execute_process()
 
     return turnaround_times, completion_times
+
 
 sjf_processes = [[1, 0, 3], [2, 2, 6], [3, 4, 4], [4, 6, 5], [5, 8, 2]]
 srt_processes = [[1, 0, 3], [2, 2, 6], [3, 4, 4], [4, 6, 5], [5, 8, 2]]

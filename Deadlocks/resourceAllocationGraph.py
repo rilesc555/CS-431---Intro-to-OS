@@ -45,28 +45,43 @@ def main():
     processes = ["P1"]
     resources = ["R1"]
 
-    rag1 = ResourceAllocationGraph(processes, resources)
-    rag1.add_edge("P1", "R1")
-    rag1.add_edge("R1", "P2")
-    rag1.add_edge("P2", "R3")
-    rag1.add_edge("R3", "P3")
-    rag1.add_edge("R2", "P1")
-    rag1.add_edge("R2", "P2")
+    # rag1 = ResourceAllocationGraph(processes, resources)
+    # rag1.add_edge("P1", "R1")
+    # rag1.add_edge("R1", "P2")
+    # rag1.add_edge("P2", "R3")
+    # rag1.add_edge("R3", "P3")
+    # rag1.add_edge("R2", "P1")
+    # rag1.add_edge("R2", "P2")
 
-    rag1.visualize()
-    rag1.check_deadlock()
+    # rag1.visualize()
+    # rag1.check_deadlock()
 
-    rag2= ResourceAllocationGraph(processes, resources)
-    rag2.add_edge("P1", "R1")
-    rag2.add_edge("R1", "P2")
-    rag2.add_edge("P2", "R3")
-    rag2.add_edge("R3", "P3")
-    rag2.add_edge("R2", "P1")
-    rag2.add_edge("R2", "P2") 
-    rag2.add_edge("P3", "R2")
+    # rag2= ResourceAllocationGraph(processes, resources)
+    # rag2.add_edge("P1", "R1")
+    # rag2.add_edge("R1", "P2")
+    # rag2.add_edge("P2", "R3")
+    # rag2.add_edge("R3", "P3")
+    # rag2.add_edge("R2", "P1")
+    # rag2.add_edge("R2", "P2")
+    # rag2.add_edge("P3", "R2")
 
-    rag2.visualize()
-    rag2.check_deadlock()
+    # rag2.visualize()
+    # rag2.check_deadlock()
+
+    rag3 = ResourceAllocationGraph(processes, resources)
+    rag3.add_edge("P1", "R1")
+    rag3.add_edge("R1", "P2")
+    rag3.add_edge("P2", "R2")
+    rag3.add_edge("R2", "P3")
+    rag3.add_edge("P3", "R3")
+    rag3.add_edge("R3", "P1")
+    rag3.add_edge("P4", "R1")
+    rag3.add_edge("P4", "R2")
+    rag3.add_edge("P4", "R3")
+
+    rag3.visualize()
+    rag3.check_deadlock()
+
 
 if __name__ == "__main__":
     main()

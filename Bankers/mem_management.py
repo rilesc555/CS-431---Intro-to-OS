@@ -1,13 +1,15 @@
 from collections import deque
+from mimetypes import init
 
 ref_string = [0, 1, 4, 0, 2, 3, 0, 1, 0, 2, 3, 4, 2, 3]
+initial_frame = []
 frame_size = 4
 frames = [0, 1, 2, 3]
 
 
-def fifo(pages, frame_size, frames):
+def fifo(pages, frame_size, initial_frame):
     print("FIFO algorithm")
-    frame_queue = frames
+    frame_queue = deque(initial_frame.copy())
     page_faults = 0
     for page in pages:
         if page not in frame_queue:
@@ -17,15 +19,15 @@ def fifo(pages, frame_size, frames):
             if len(frame_queue) < frame_size:
                 frame_queue.append(page)
             else:
-                frame_queue.pop(0)
+                frame_queue.popleft()
                 frame_queue.append(page)
     
     print("End of FIFO algorithm")
     print(f"Page faults: {page_faults}")
 
-def lru(pages, frame_size, frames):
+def lru(pages, frame_size, initial_frame):
     print("LRU algorithm")
-    frame_queue = deque(frames)
+    frame_queue = deque(initial_frame.copy())
     page_faults = 0
     for page in pages:
         # if ref string already in frames, remove it and append it to the end

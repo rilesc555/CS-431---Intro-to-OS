@@ -6,6 +6,7 @@ frames = [0, 1, 2, 3]
 
 
 def fifo(pages, frame_size, frames):
+    print("FIFO algorithm")
     frame_queue = frames
     page_faults = 0
     for page in pages:
@@ -18,10 +19,13 @@ def fifo(pages, frame_size, frames):
             else:
                 frame_queue.pop(0)
                 frame_queue.append(page)
-    return page_faults
+    
+    print("End of FIFO algorithm")
+    print(f"Page faults: {page_faults}")
 
 def lru(pages, frame_size, frames):
-    frame_queue = deque(pages)
+    print("LRU algorithm")
+    frame_queue = deque(frames)
     page_faults = 0
     for page in pages:
         # if ref string already in frames, remove it and append it to the end
@@ -37,7 +41,14 @@ def lru(pages, frame_size, frames):
                 frame_queue.popleft()
                 frame_queue.append(page)
 
-print(f"Page faults: {fifo(ref_string, frame_size, frames)}")
+    print("End of LRU algorithm")
+    print(f"Page faults: {page_faults}")
 
-print(f"Page faults: {lru(ref_string, frame_size, frames)}")
+def main():
+    fifo(ref_string, frame_size, frames)
+    print()
+    lru(ref_string, frame_size, frames)
+
+if __name__ == "__main__":
+    main()
 

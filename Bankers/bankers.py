@@ -17,6 +17,9 @@ class Bankers:
         self.running = np.ones(self.num_processes)
 
     def is_safe(self) -> None:
+        print()
+        print("--------------------")
+        print()
         sequence = []
         while np.any(self.running):
             allocated = False
@@ -35,9 +38,12 @@ class Bankers:
             if not allocated:
                 print("Unsafe - no possible sequences")
                 return
-        print(f"Safe sequence: ", end="")
+        print()
+        print(f"Safe sequence found!\nSafe sequence: ", end="")
         for p in sequence:
             print(f"{p} ", end="")
+        print("\n")
+        print("--------------------")
         print()
         return
 
